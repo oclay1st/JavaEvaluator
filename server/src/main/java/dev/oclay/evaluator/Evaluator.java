@@ -24,13 +24,13 @@ public class Evaluator {
         char [] data = expression.toCharArray();
         String [] expressionValues = new String[data.length];
         int index = 0;
-        for (char datum : data) {
-            if (Character.isDigit(datum)) {
-                currentNumber.append(datum);
+        for (char character : data) {
+            if (Character.isDigit(character)) {
+                currentNumber.append(character);
             } else {
                 expressionValues[index] = currentNumber.toString();
                 currentNumber.setLength(0);
-                expressionValues[index+1] = Character.toString(datum);
+                expressionValues[index+1] = Character.toString(character);
                 index+=2;
             }
         }
