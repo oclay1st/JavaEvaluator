@@ -1,5 +1,6 @@
+<br/>
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/oclay1st/JavaEvaluator">
     <img src="plug.png" alt="Logo" width="80" height="80">
   </a>
   <h3 align="center">JavaEvaluator</h3>
@@ -32,9 +33,6 @@ In order to run the server you need to execute the flow command:
 In order to run the client you need to execute the flow command:
 
     java --enable-preview -jar client/target/client-1.0-SNAPSHOT.jar -s localhost -p 5000
-
-* where:
-    
 
     usage: Usage:
     -p,--port <arg>     Set the server port
