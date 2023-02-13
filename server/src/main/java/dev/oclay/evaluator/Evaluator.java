@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public final class Evaluator {
 
-    private static final Pattern validationPattern = Pattern.compile("^\\d+((\\+|-|\\*|//)\\d+)*$");
+    private static final Pattern validationPattern = Pattern.compile("^\\d+((\\+|-|\\*|\\/)\\d+)*$");
 
     private Evaluator() {
         throw new IllegalStateException("Utility class");
