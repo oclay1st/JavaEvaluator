@@ -33,9 +33,8 @@ public class Server {
             String expression;
             while ((expression = in.readLine()) != null) {
                 String result = "NaN";
-                var evaluator = new Evaluator(expression);
-                if (evaluator.isValidExpression()) {
-                    result = String.valueOf(evaluator.evaluate());
+                if (Evaluator.isValid(expression)) {
+                    result = String.valueOf(Evaluator.evaluate(expression));
                 }
                 out.println(expression + "=" + result);
             }

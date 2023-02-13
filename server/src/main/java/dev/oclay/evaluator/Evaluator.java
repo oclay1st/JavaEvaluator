@@ -4,22 +4,19 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Evaluator {
-
-    private final String expression;
+public final class Evaluator {
 
     private static final Pattern validationPattern = Pattern.compile("^\\d+((\\+|-|\\*|//)\\d+)*$");
 
-    Evaluator(String expression) {
-        this.expression = expression;
+    private Evaluator() {
+        throw new IllegalStateException("Utility class");
     }
 
-    public boolean isValidExpression() throws IllegalArgumentException {
-        Objects.requireNonNull(expression);
-        return validationPattern.matcher(expression).matches();
+    public static boolean isValid(String expression)  {
+        return Objects.nonNull(expression) && validationPattern.matcher(expression).matches();
     }
 
-    private String [] parse()  {
+    public static String [] parse(String expression)  {
         StringBuilder currentNumber = new StringBuilder();
         char [] data = expression.toCharArray();
         String [] expressionValues = new String[data.length];
@@ -38,8 +35,8 @@ public class Evaluator {
         return Arrays.copyOf(expressionValues, index+1);
     }
 
-    public int evaluate() {
-        var expressionValues = parse();
+    public static int evaluate(String expression) {
+        var expressionValues = parse(expression);
         Integer currentValue = Integer.parseInt(expressionValues[0]);
         for (int i = 0; i < expressionValues.length - 1; i+=2) {
             String operation = expressionValues[i+1];
@@ -49,7 +46,7 @@ public class Evaluator {
         return currentValue;
     }
 
-    private Integer evalOperation(Integer first, String operation, Integer second) {
+    public static Integer evalOperation(Integer first, String operation, Integer second) {
         return switch (operation) {
             case "+" -> first + second;
             case "-" -> first - second;
